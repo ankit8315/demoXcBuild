@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5F5112E12FA88E51009E4565 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5F5112E02FA88E51009E4565 /* FirebaseCore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		5F90C28D2FA83E0A00087EE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F5112E12FA88E51009E4565 /* FirebaseCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +77,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F5112DF2FA88E51009E4565 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5F90C2722FA83E0900087EE2 = {
 			isa = PBXGroup;
 			children = (
 				5F90C27D2FA83E0900087EE2 /* testXcBuild */,
 				5F90C28F2FA83E0A00087EE2 /* testXcBuildTests */,
 				5F90C2992FA83E0A00087EE2 /* testXcBuildUITests */,
+				5F5112DF2FA88E51009E4565 /* Frameworks */,
 				5F90C27C2FA83E0900087EE2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +125,7 @@
 			);
 			name = testXcBuild;
 			packageProductDependencies = (
+				5F5112E02FA88E51009E4565 /* FirebaseCore */,
 			);
 			productName = testXcBuild;
 			productReference = 5F90C27B2FA83E0900087EE2 /* testXcBuild.app */;
@@ -195,6 +209,9 @@
 			);
 			mainGroup = 5F90C2722FA83E0900087EE2;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5F5112CC2FA88C1E009E4565 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5F90C27C2FA83E0900087EE2 /* Products */;
 			projectDirPath = "";
@@ -561,6 +578,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5F5112CC2FA88C1E009E4565 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.12.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5F5112E02FA88E51009E4565 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F5112CC2FA88C1E009E4565 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5F90C2732FA83E0900087EE2 /* Project object */;
 }

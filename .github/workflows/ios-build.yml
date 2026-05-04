@@ -1,31 +1,40 @@
-name: iOS Build
+name: iOS CI/CD
 
 on:
   push:
     branches: [ main ]
-  pull_request:
 
 jobs:
   build:
     runs-on: macos-latest
 
     steps:
-      - name: 📥 Checkout code
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: 🛠 Select Xcode version
-        run: sudo xcode-select -switch /Applications/Xcode.app
+      - name: 🛠 Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
 
-      - name: 🔍 Show Xcode version
-        run: xcodebuild -version
-
-      - name: 📱 List available simulators
-        run: xcrun simctl list devices
-
-      - name: 🔨 Build app (Simulator)
+      - name: 📦 Install dependencies
         run: |
-          xcodebuild \
-            -scheme testXcBuild \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
-            clean build
+          gem install fastlane
 
+      - name: 🔐 Setup Match
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+        run: |
+          fastlane match appstore --readonly
+
+      - name: 🚀 Deploy to TestFlight
+        env:
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+        run: |
+          fastlane beta
+
+      - name: 🔥 Distribute to Firebase
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          fastlane firebase
