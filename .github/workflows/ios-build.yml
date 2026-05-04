@@ -27,11 +27,11 @@ jobs:
         run: |
           fastlane match appstore --readonly
 
-      - name: 🚀 Deploy to TestFlight
-        env:
-          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
-        run: |
-          fastlane beta
+#      - name: 🚀 Deploy to TestFlight
+#        env:
+#          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+#        run: |
+#          fastlane beta
 
       - name: 🔥 Distribute to Firebase
         env:
