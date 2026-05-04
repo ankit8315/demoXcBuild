@@ -1,0 +1,31 @@
+name: iOS Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🛠 Select Xcode version
+        run: sudo xcode-select -switch /Applications/Xcode.app
+
+      - name: 🔍 Show Xcode version
+        run: xcodebuild -version
+
+      - name: 📱 List available simulators
+        run: xcrun simctl list devices
+
+      - name: 🔨 Build app (Simulator)
+        run: |
+          xcodebuild \
+            -scheme testXcBuild \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            clean build
+
